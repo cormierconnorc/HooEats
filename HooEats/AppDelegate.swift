@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  HooEats
+//  DiningHallApp
 //
 //  Created by Connor on 6/20/14.
 //  Copyright (c) 2014 Connor. All rights reserved.

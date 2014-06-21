@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CEC74E4A1955132C00EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E491955132C00EC0433 /* AppDelegate.swift */; };
-		CEC74E4C1955132C00EC0433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E4B1955132C00EC0433 /* ViewController.swift */; };
-		CEC74E4F1955132C00EC0433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E4D1955132C00EC0433 /* Main.storyboard */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
+		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
+		CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */; };
+		CEC74E6E1955135700EC0433 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E681955135700EC0433 /* AuthenticationViewController.swift */; };
+		CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */; };
+		CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6A1955135700EC0433 /* FileManagerModel.swift */; };
+		CEC74E711955135700EC0433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6B1955135700EC0433 /* ViewController.swift */; };
+		CEC74E731955136800EC0433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E721955136800EC0433 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,13 +31,17 @@
 /* Begin PBXFileReference section */
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E481955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEC74E491955132C00EC0433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CEC74E4B1955132C00EC0433 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CEC74E4E1955132C00EC0433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEC74E501955132C00EC0433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CEC74E561955132C00EC0433 /* HooEatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HooEatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E5B1955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HooEatsTests.swift; sourceTree = "<group>"; };
+		CEC74E661955135700EC0433 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManagerModel.swift; sourceTree = "<group>"; };
+		CEC74E681955135700EC0433 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManagerModel.swift; sourceTree = "<group>"; };
+		CEC74E6A1955135700EC0433 /* FileManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerModel.swift; sourceTree = "<group>"; };
+		CEC74E6B1955135700EC0433 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEC74E721955136800EC0433 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +83,13 @@
 		CEC74E461955132C00EC0433 /* HooEats */ = {
 			isa = PBXGroup;
 			children = (
-				CEC74E491955132C00EC0433 /* AppDelegate.swift */,
-				CEC74E4B1955132C00EC0433 /* ViewController.swift */,
-				CEC74E4D1955132C00EC0433 /* Main.storyboard */,
+				CEC74E721955136800EC0433 /* Main.storyboard */,
+				CEC74E661955135700EC0433 /* AppDelegate.swift */,
+				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
+				CEC74E681955135700EC0433 /* AuthenticationViewController.swift */,
+				CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */,
+				CEC74E6A1955135700EC0433 /* FileManagerModel.swift */,
+				CEC74E6B1955135700EC0433 /* ViewController.swift */,
 				CEC74E501955132C00EC0433 /* Images.xcassets */,
 				CEC74E471955132C00EC0433 /* Supporting Files */,
 			);
@@ -189,8 +201,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC74E4F1955132C00EC0433 /* Main.storyboard in Resources */,
 				CEC74E511955132C00EC0433 /* Images.xcassets in Resources */,
+				CEC74E731955136800EC0433 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,8 +220,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEC74E4C1955132C00EC0433 /* ViewController.swift in Sources */,
-				CEC74E4A1955132C00EC0433 /* AppDelegate.swift in Sources */,
+				CEC74E711955135700EC0433 /* ViewController.swift in Sources */,
+				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,
+				CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */,
+				CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */,
+				CEC74E6E1955135700EC0433 /* AuthenticationViewController.swift in Sources */,
+				CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,17 +246,6 @@
 			targetProxy = CEC74E571955132C00EC0433 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		CEC74E4D1955132C00EC0433 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEC74E4E1955132C00EC0433 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CEC74E5E1955132C00EC0433 /* Debug */ = {

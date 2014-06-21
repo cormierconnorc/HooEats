@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller - Launch View-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-dY-9q9">
+                                <rect key="frame" x="219" y="229" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="165" id="Cfl-wo-xSF"/>
+                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TEd-VH-l9m"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Launch View" id="nfN-tS-m6L"/>
+                    <connections>
+                        <outlet property="resultLabel" destination="ZFw-dY-9q9" id="ehW-wU-rli"/>
+                        <segue destination="e06-yl-BF3" kind="presentation" identifier="authenticationSegue" id="apB-QZ-NKL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="679"/>
+        </scene>
+        <!--Authentication View Controller-->
+        <scene sceneID="RFF-ko-QrI">
+            <objects>
+                <viewController id="e06-yl-BF3" customClass="AuthenticationViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bav-sG-pxx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kbi-nI-4OL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zz1-AI-e4X">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6J-G5-nJG">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X6J-G5-nJG" firstAttribute="top" secondItem="zz1-AI-e4X" secondAttribute="top" id="7hN-1t-rjg"/>
+                            <constraint firstAttribute="trailing" secondItem="X6J-G5-nJG" secondAttribute="trailing" id="IJC-bH-N00"/>
+                            <constraint firstAttribute="bottom" secondItem="X6J-G5-nJG" secondAttribute="bottom" id="L2E-ZF-CYI"/>
+                            <constraint firstItem="X6J-G5-nJG" firstAttribute="leading" secondItem="zz1-AI-e4X" secondAttribute="leading" id="dQZ-ro-8W3"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="X6J-G5-nJG" id="QaB-eY-geH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7SL-ye-kpO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="679"/>
+        </scene>
+    </scenes>
+</document>
