@@ -71,7 +71,7 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
         }
         
         //Update label to show status (temporary, of course)
-        resultLabel.text = "Failure! You suck!"
+        resultLabel.text = "Failure. Please Try Again."
         
         //Trigger Segue to auth view
         self.performSegueWithIdentifier("authenticationSegue", sender: self)
@@ -87,10 +87,11 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
             return
         }
         
-        //Move on to next view controller, once implemented
-        
         //Just update a label for now. Isn't it pretty?
-        resultLabel.text = "Success! Good for you!"
+        resultLabel.text = "Success. Redirecting You."
+        
+        //Move on to next view controller, once implemented
+        self.performSegueWithIdentifier("primaryViewSegue", sender: self)
     }
     
     //AuthViewDelegate method, called when AuthViewController is dismissed with result

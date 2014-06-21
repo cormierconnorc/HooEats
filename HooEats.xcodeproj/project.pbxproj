@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE133D851955EFDB00B3AD70 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
 		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E481955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC74E501955132C00EC0433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC74E721955136800EC0433 /* Main.storyboard */,
+				CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */,
 				CEC74E661955135700EC0433 /* AppDelegate.swift */,
 				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
 				CEC74E681955135700EC0433 /* AuthenticationViewController.swift */,
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE133D851955EFDB00B3AD70 /* PrimaryViewController.swift in Sources */,
 				CEC74E711955135700EC0433 /* ViewController.swift in Sources */,
 				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,
 				CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */,
@@ -404,6 +408,7 @@
 				CEC74E621955132C00EC0433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEC74E631955132C00EC0433 /* Build configuration list for PBXNativeTarget "HooEatsTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +417,7 @@
 				CEC74E651955132C00EC0433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

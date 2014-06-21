@@ -58,20 +58,27 @@ class AuthenticationViewController: UIViewController, UIWebViewDelegate
             {
                 var (user, pass) = extractData(data)
                 
-                //Don't allow empty data. This causes the request to fail before the
-                //view controller can be dismissed, causing another view controller to
-                //be displayed while this one still is. We'll have to fix this race
-                //condition in a more permanent way later on
+                //Don't allow empty data.
                 if user == "" || pass == ""
                 {
                     return false
                 }
                 
-                //Dismiss this view
-                self.dismissModalViewControllerAnimated(true)
                 
-                //Now send the data back to the delegate
-                delegate?.updateAuthInfo(user, pass: pass)
+                //If there is a delegate, only send user and pass information when the view has been 
+                //completely dismissed. This prevents presentation order conflicts.
+                if let locDel = delegate
+                {
+                    //Dismiss this view
+                    self.dismissViewControllerAnimated(true, completion: {
+                        locDel.updateAuthInfo(user, pass: pass)
+                    })
+                }
+                //Otherwise, just dismiss with no completion block
+                else
+                {
+                    self.dismissModalViewControllerAnimated(true)
+                }
             }
         }
         

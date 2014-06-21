@@ -29,7 +29,7 @@ class AuthenticationManagerModel
         
         //Temporary, this allows us to test the authentication code each time the app runs
         //We can remove it whenever you guys want to
-        fileManager.deleteFile(saveFileName)
+        //fileManager.deleteFile(saveFileName)
     }
     
     func setCredentials(user: String, pass: String)
