@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PrimaryViewController: UIViewController
+class DiningViewController: UIViewController
 {
     @IBOutlet var menuListButton: UIButton
     @IBOutlet var mapViewButton: UIButton

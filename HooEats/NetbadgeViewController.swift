@@ -8,19 +8,19 @@
 
 import UIKit
 
-protocol AuthViewDelegate
+protocol NetbadgeViewDelegate
 {
     func updateAuthInfo(user: String, pass: String)
 }
 
-class AuthenticationViewController: UIViewController, UIWebViewDelegate
+class NetbadgeViewController: UIViewController, UIWebViewDelegate
 {
     @IBOutlet var webView: UIWebView
     
     let authPath = "https://netbadge.virginia.edu/"
     let subPath = "https://netbadge.virginia.edu/index.cgi"
     
-    var delegate: AuthViewDelegate?
+    var delegate: NetbadgeViewDelegate?
     
     override func viewDidLoad()
     {
@@ -70,14 +70,21 @@ class AuthenticationViewController: UIViewController, UIWebViewDelegate
                 if let locDel = delegate
                 {
                     //Dismiss this view
-                    self.dismissViewControllerAnimated(true, completion: {
-                        locDel.updateAuthInfo(user, pass: pass)
-                    })
+                    //self.dismissViewControllerAnimated(true, completion: {
+                    //    locDel.updateAuthInfo(user, pass: pass)
+                    //})
+                    
+                    self.navigationController.popViewControllerAnimated(true)
+                    
+                    //Update auth info (caution: race condition)
+                    locDel.updateAuthInfo(user, pass: pass)
                 }
                 //Otherwise, just dismiss with no completion block
                 else
                 {
-                    self.dismissModalViewControllerAnimated(true)
+                    //self.dismissViewControllerAnimated(true, completion: nil)
+                    
+                    self.navigationController.popViewControllerAnimated(true)
                 }
             }
         }

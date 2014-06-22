@@ -7,18 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE133D851955EFDB00B3AD70 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */; };
+		CE133D851955EFDB00B3AD70 /* DiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE133D841955EFDB00B3AD70 /* DiningViewController.swift */; };
 		CE4B8C481956156100CEB735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B8C471956156100CEB735 /* MapViewController.swift */; };
 		CE4B8C4A1956167900CEB735 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B8C491956167900CEB735 /* MapKit.framework */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
 		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
 		CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */; };
-		CEC74E6E1955135700EC0433 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E681955135700EC0433 /* AuthenticationViewController.swift */; };
+		CEC74E6E1955135700EC0433 /* NetbadgeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E681955135700EC0433 /* NetbadgeViewController.swift */; };
 		CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */; };
 		CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6A1955135700EC0433 /* FileManagerModel.swift */; };
-		CEC74E711955135700EC0433 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6B1955135700EC0433 /* ViewController.swift */; };
+		CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6B1955135700EC0433 /* AuthViewController.swift */; };
 		CEC74E731955136800EC0433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E721955136800EC0433 /* Main.storyboard */; };
+		CECEF07619573207004AAD4B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEF07519573207004AAD4B /* AccountViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
+		CE133D841955EFDB00B3AD70 /* DiningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningViewController.swift; sourceTree = "<group>"; };
 		CE4B8C471956156100CEB735 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CE4B8C491956167900CEB735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,11 +44,12 @@
 		CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HooEatsTests.swift; sourceTree = "<group>"; };
 		CEC74E661955135700EC0433 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManagerModel.swift; sourceTree = "<group>"; };
-		CEC74E681955135700EC0433 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		CEC74E681955135700EC0433 /* NetbadgeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetbadgeViewController.swift; sourceTree = "<group>"; };
 		CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManagerModel.swift; sourceTree = "<group>"; };
 		CEC74E6A1955135700EC0433 /* FileManagerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerModel.swift; sourceTree = "<group>"; };
-		CEC74E6B1955135700EC0433 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEC74E6B1955135700EC0433 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		CEC74E721955136800EC0433 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CECEF07519573207004AAD4B /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +94,15 @@
 			isa = PBXGroup;
 			children = (
 				CEC74E721955136800EC0433 /* Main.storyboard */,
+				CECEF07519573207004AAD4B /* AccountViewController.swift */,
 				CE4B8C471956156100CEB735 /* MapViewController.swift */,
-				CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */,
+				CE133D841955EFDB00B3AD70 /* DiningViewController.swift */,
 				CEC74E661955135700EC0433 /* AppDelegate.swift */,
 				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
-				CEC74E681955135700EC0433 /* AuthenticationViewController.swift */,
+				CEC74E681955135700EC0433 /* NetbadgeViewController.swift */,
 				CEC74E691955135700EC0433 /* CommunicationManagerModel.swift */,
 				CEC74E6A1955135700EC0433 /* FileManagerModel.swift */,
-				CEC74E6B1955135700EC0433 /* ViewController.swift */,
+				CEC74E6B1955135700EC0433 /* AuthViewController.swift */,
 				CEC74E501955132C00EC0433 /* Images.xcassets */,
 				CEC74E471955132C00EC0433 /* Supporting Files */,
 			);
@@ -235,14 +238,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE133D851955EFDB00B3AD70 /* PrimaryViewController.swift in Sources */,
-				CEC74E711955135700EC0433 /* ViewController.swift in Sources */,
+				CE133D851955EFDB00B3AD70 /* DiningViewController.swift in Sources */,
+				CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */,
 				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,
 				CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */,
 				CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */,
-				CEC74E6E1955135700EC0433 /* AuthenticationViewController.swift in Sources */,
+				CEC74E6E1955135700EC0433 /* NetbadgeViewController.swift in Sources */,
 				CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */,
 				CE4B8C481956156100CEB735 /* MapViewController.swift in Sources */,
+				CECEF07619573207004AAD4B /* AccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

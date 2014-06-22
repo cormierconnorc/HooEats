@@ -69,4 +69,11 @@ class FileManagerModel
             println("Failed to delete file: " + error.localizedDescription)
         }
     }
+    
+    func exists(fileName: String) -> Bool
+    {
+        let filePath = documentsDir.stringByAppendingPathComponent(fileName)
+        
+        return fileManager.fileExistsAtPath(filePath)
+    }
 }

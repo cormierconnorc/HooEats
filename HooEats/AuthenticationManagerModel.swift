@@ -32,6 +32,11 @@ class AuthenticationManagerModel
         //fileManager.deleteFile(saveFileName)
     }
     
+    func hasCredentials() -> Bool
+    {
+        return fileManager.exists(saveFileName)
+    }
+    
     func setCredentials(user: String, pass: String)
     {
         //Write credentials to file using FileManager
@@ -97,7 +102,7 @@ class AuthenticationManagerModel
         }
     }
     
-    func readFile()
+    func readFile() -> Bool
     {
         var posConts = fileManager.readFile(saveFileName)
         
@@ -109,7 +114,28 @@ class AuthenticationManagerModel
             {
                 user = splitParts[0]
                 pass = splitParts[1]
+                
+                return true
             }
+        }
+        
+        return false
+    }
+    
+    func deauthenticate()
+    {
+        self.user = nil
+        self.pass = nil
+        
+        fileManager.deleteFile(saveFileName)
+        
+        //Remove auth cookie, as well
+        var cookStore = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        
+        //Delete each cookie.
+        for cookie in (cookStore.cookies as NSHTTPCookie[])
+        {
+            cookStore.deleteCookie(cookie)
         }
     }
 }

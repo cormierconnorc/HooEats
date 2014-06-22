@@ -8,9 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
+class AuthViewController: UIViewController, AuthManagerDelegate, NetbadgeViewDelegate
 {
     @IBOutlet var resultLabel: UILabel
+    @IBOutlet var logButton: UIButton
+    @IBOutlet var continueButton: UIButton
+    @IBOutlet var activityIndicator: UIActivityIndicatorView
     
     let authManager = AuthenticationManagerModel()
     
@@ -24,6 +27,9 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
 
         //Set auth manager's delegate
         authManager.delegate = self
+        
+        //Start the working spinner
+        activityIndicator.startAnimating()
         
         //Now have it try to authenticate
         authManager.tryAuth()
@@ -70,8 +76,26 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
             return
         }
         
-        //Update label to show status (temporary, of course)
-        resultLabel.text = "Failure. Please Try Again."
+        //Stop the spinner
+        activityIndicator.stopAnimating()
+        
+        //Update label to show status
+        if authManager.hasCredentials()
+        {
+            resultLabel.text = "Failure. Please Enter Correct Login."
+        }
+        else
+        {
+            resultLabel.text = "No credentials found. Please Login."
+        }
+        
+        //Disable the continue button
+        self.continueButton.enabled = false
+        
+        //Set button text to say log in
+        self.logButton.enabled = true
+        self.logButton.setTitle("Log In", forState: UIControlState.Normal)
+        
         
         //Trigger Segue to auth view
         self.performSegueWithIdentifier("authenticationSegue", sender: self)
@@ -87,19 +111,69 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
             return
         }
         
-        //Just update a label for now. Isn't it pretty?
-        resultLabel.text = "Success. Redirecting You."
+        //Stop the spinner
+        activityIndicator.stopAnimating()
+        
+        //Status label update
+        resultLabel.text = "Successfully Logged In."
+        
+        //Enable continue button
+        self.continueButton.enabled = true
+        
+        //Set button text and make sure it's enabled
+        self.logButton.enabled = true
+        self.logButton.setTitle("Log Out", forState: UIControlState.Normal)
         
         //Move on to next view controller, once implemented
-        self.performSegueWithIdentifier("primaryViewSegue", sender: self)
+        self.performSegueWithIdentifier("accountSegue", sender: self)
     }
     
     //AuthViewDelegate method, called when AuthViewController is dismissed with result
     func updateAuthInfo(user: String, pass: String)
     {
+        resultLabel.text = "Trying to log you in. Please stand by."
+        
+        //Disable log in/out button and continue button
+        self.logButton.enabled = false
+        self.continueButton.enabled = false
+        
+        //Start the spinner
+        activityIndicator.startAnimating()
+        
         //Update credentials and retry authentication
         authManager.setCredentials(user, pass: pass)
         authManager.tryAuth()
+    }
+    
+    @IBAction func onLogButtonClick()
+    {
+        let butText = logButton.titleLabel.text
+        
+        if butText == "Log In"
+        {
+            //Perform authentication
+            self.performSegueWithIdentifier("authenticationSegue", sender: self)
+        }
+        else
+        {
+            //Log the user out
+            self.authManager.deauthenticate()
+            
+            //And set the button to show it
+            self.logButton.setTitle("Log In", forState: UIControlState.Normal)
+            
+            //Also disable continue button
+            self.continueButton.enabled = false
+            
+            //And change label
+            self.resultLabel.text = "No credentials found. Please Login."
+        }
+    }
+    
+    @IBAction func onContinueButtonClick()
+    {
+        //Perform segue to primary view
+        self.performSegueWithIdentifier("accountSegue", sender: self)
     }
     
     //Segue preparations
@@ -107,7 +181,7 @@ class ViewController: UIViewController, AuthManagerDelegate, AuthViewDelegate
     {
         if segue?.identifier == "authenticationSegue"
         {
-            var destView = segue!.destinationViewController as AuthenticationViewController
+            var destView = segue!.destinationViewController as NetbadgeViewController
             
             //Set delegate to this object
             destView.delegate = self
