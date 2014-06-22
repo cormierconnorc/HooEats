@@ -16,23 +16,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mFt-tP-PjU">
-                                <rect key="frame" x="230" y="230" width="20" height="20"/>
-                            </activityIndicatorView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authenticating. Please Wait." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-dY-9q9">
                                 <rect key="frame" x="0.0" y="258" width="480" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mFt-tP-PjU">
+                                <rect key="frame" x="230" y="230" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mFt-tP-PjU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7gS-BG-bfu"/>
-                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZHo-Fj-YLl"/>
-                            <constraint firstItem="mFt-tP-PjU" firstAttribute="centerX" secondItem="ZFw-dY-9q9" secondAttribute="centerX" id="cFP-Kc-qzg"/>
-                            <constraint firstAttribute="trailing" secondItem="ZFw-dY-9q9" secondAttribute="trailing" id="nvL-6A-q3S"/>
-                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="top" secondItem="mFt-tP-PjU" secondAttribute="bottom" constant="8" symbolic="YES" id="pIl-xm-d3C"/>
+                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="top" secondItem="mFt-tP-PjU" secondAttribute="bottom" constant="8" symbolic="YES" id="5wZ-nT-hTs"/>
+                            <constraint firstItem="ZFw-dY-9q9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="KZl-Sg-QFh"/>
+                            <constraint firstAttribute="trailing" secondItem="ZFw-dY-9q9" secondAttribute="trailing" id="MCl-xB-BaG"/>
+                            <constraint firstItem="mFt-tP-PjU" firstAttribute="centerX" secondItem="ZFw-dY-9q9" secondAttribute="centerX" id="hhw-5a-8dC"/>
+                            <constraint firstItem="mFt-tP-PjU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kAY-H2-5Qy"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="2025" y="200"/>
         </scene>
-        <!--View Controller - Map VIew-->
+        <!--Map View Controller - Map View-->
         <scene sceneID="Md6-4R-Sse">
             <objects>
-                <viewController id="VpD-ek-ke5" sceneMemberID="viewController">
+                <viewController id="VpD-ek-ke5" customClass="MapViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iTn-pB-0QC"/>
                         <viewControllerLayoutGuide type="bottom" id="Bo3-px-YLe"/>
@@ -142,10 +142,24 @@
                     <view key="view" contentMode="scaleToFill" id="ZHg-Bp-gMK">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tK3-e1-fRG">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="tK3-e1-fRG" secondAttribute="bottom" id="4KA-wT-CTa"/>
+                            <constraint firstAttribute="trailing" secondItem="tK3-e1-fRG" secondAttribute="trailing" id="5mY-Ia-wFq"/>
+                            <constraint firstItem="tK3-e1-fRG" firstAttribute="leading" secondItem="ZHg-Bp-gMK" secondAttribute="leading" id="OyT-qF-HI3"/>
+                            <constraint firstItem="tK3-e1-fRG" firstAttribute="top" secondItem="ZHg-Bp-gMK" secondAttribute="top" id="flE-Yp-ceZ"/>
+                        </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Map VIew" id="G9d-IC-OYA"/>
+                    <navigationItem key="navigationItem" title="Map View" id="G9d-IC-OYA"/>
+                    <connections>
+                        <outlet property="map" destination="tK3-e1-fRG" id="LVx-wi-Wxt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-t0-CWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -170,10 +184,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="X6J-G5-nJG" firstAttribute="top" secondItem="zz1-AI-e4X" secondAttribute="top" id="7hN-1t-rjg"/>
-                            <constraint firstAttribute="trailing" secondItem="X6J-G5-nJG" secondAttribute="trailing" id="IJC-bH-N00"/>
-                            <constraint firstAttribute="bottom" secondItem="X6J-G5-nJG" secondAttribute="bottom" id="L2E-ZF-CYI"/>
-                            <constraint firstItem="X6J-G5-nJG" firstAttribute="leading" secondItem="zz1-AI-e4X" secondAttribute="leading" id="dQZ-ro-8W3"/>
+                            <constraint firstItem="X6J-G5-nJG" firstAttribute="leading" secondItem="zz1-AI-e4X" secondAttribute="leading" id="Jkf-bn-ioO"/>
+                            <constraint firstItem="X6J-G5-nJG" firstAttribute="top" secondItem="zz1-AI-e4X" secondAttribute="top" id="age-cu-6qw"/>
+                            <constraint firstAttribute="bottom" secondItem="X6J-G5-nJG" secondAttribute="bottom" id="hcc-EU-xzV"/>
+                            <constraint firstAttribute="trailing" secondItem="X6J-G5-nJG" secondAttribute="trailing" id="kKp-dK-hYE"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>

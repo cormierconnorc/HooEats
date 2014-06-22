@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		CE133D851955EFDB00B3AD70 /* PrimaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */; };
+		CE4B8C481956156100CEB735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B8C471956156100CEB735 /* MapViewController.swift */; };
+		CE4B8C4A1956167900CEB735 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B8C491956167900CEB735 /* MapKit.framework */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
 		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrimaryViewController.swift; sourceTree = "<group>"; };
+		CE4B8C471956156100CEB735 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CE4B8C491956167900CEB735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E481955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC74E501955132C00EC0433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -51,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4B8C4A1956167900CEB735 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +72,7 @@
 		CEC74E3B1955132C00EC0433 = {
 			isa = PBXGroup;
 			children = (
+				CE4B8C491956167900CEB735 /* MapKit.framework */,
 				CEC74E461955132C00EC0433 /* HooEats */,
 				CEC74E591955132C00EC0433 /* HooEatsTests */,
 				CEC74E451955132C00EC0433 /* Products */,
@@ -86,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				CEC74E721955136800EC0433 /* Main.storyboard */,
+				CE4B8C471956156100CEB735 /* MapViewController.swift */,
 				CE133D841955EFDB00B3AD70 /* PrimaryViewController.swift */,
 				CEC74E661955135700EC0433 /* AppDelegate.swift */,
 				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
@@ -173,6 +180,11 @@
 				TargetAttributes = {
 					CEC74E431955132C00EC0433 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					CEC74E551955132C00EC0433 = {
 						CreatedOnToolsVersion = 6.0;
@@ -230,6 +242,7 @@
 				CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */,
 				CEC74E6E1955135700EC0433 /* AuthenticationViewController.swift in Sources */,
 				CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */,
+				CE4B8C481956156100CEB735 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
