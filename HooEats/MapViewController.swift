@@ -166,19 +166,13 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         //Figure out if all halls are opened or closed
         for hall in dinAn.diningGroup
         {
-            if let opPeriods = hall.hours
+            if hall.isOpen()
             {
-                for period in opPeriods
-                {
-                    if period.isCurrent()
-                    {
-                        allClosed = false
-                    }
-                    else
-                    {
-                        allOpen = false
-                    }
-                }
+                allClosed = false
+            }
+            else
+            {
+                allOpen = false
             }
         }
         
@@ -195,7 +189,6 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         {
             annotationView!.pinColor = MKPinAnnotationColor.Purple
         }
-        
         
         return annotationView;
     }
