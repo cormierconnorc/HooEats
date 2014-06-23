@@ -8,14 +8,22 @@
 
 import UIKit
 
-class DiningViewController: UIViewController
+class DiningViewController: UIViewController, DiningDataDelegate
 {
     @IBOutlet var menuListButton: UIButton
     @IBOutlet var mapViewButton: UIButton
     
+    let diningModel = DiningDataModel()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        //Make this object the dining model's delegate
+        diningModel.delegate = self
+        
+        //Start the model updating
+        diningModel.getAll()
     }
     
     override func didReceiveMemoryWarning()

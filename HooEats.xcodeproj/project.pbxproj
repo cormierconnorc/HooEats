@@ -20,6 +20,7 @@
 		CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E6B1955135700EC0433 /* AuthViewController.swift */; };
 		CEC74E731955136800EC0433 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E721955136800EC0433 /* Main.storyboard */; };
 		CECEF07619573207004AAD4B /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEF07519573207004AAD4B /* AccountViewController.swift */; };
+		CECEF07819579877004AAD4B /* DiningDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECEF07719579877004AAD4B /* DiningDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		CEC74E6B1955135700EC0433 /* AuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		CEC74E721955136800EC0433 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CECEF07519573207004AAD4B /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		CECEF07719579877004AAD4B /* DiningDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				CECEF07519573207004AAD4B /* AccountViewController.swift */,
 				CE4B8C471956156100CEB735 /* MapViewController.swift */,
 				CE133D841955EFDB00B3AD70 /* DiningViewController.swift */,
+				CECEF07719579877004AAD4B /* DiningDataModel.swift */,
 				CEC74E661955135700EC0433 /* AppDelegate.swift */,
 				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
 				CEC74E681955135700EC0433 /* NetbadgeViewController.swift */,
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CECEF07819579877004AAD4B /* DiningDataModel.swift in Sources */,
 				CE133D851955EFDB00B3AD70 /* DiningViewController.swift in Sources */,
 				CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */,
 				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,

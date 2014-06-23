@@ -25,11 +25,31 @@ class CommunicationManagerModel
     }
     
     /*
-    Carry out a post request and invoke a given callback method upon completion
+    Carry out a get request and invoke a given callback method upon completion
     */
     func doGet(url: String, callback: String? -> Void)
     {
         runRequestAsync(buildGetRequest(url), callback)
+    }
+    
+    /*
+    Convenience wrapper. Do a get request and get the dictionary containing parsed JSON back
+    */
+    func doGetJson(url: String, callback: NSObject? -> Void)
+    {
+        func callWrapper(response: String?)
+        {
+            if let r = response
+            {
+                callback(parseJson(r))
+            }
+            else
+            {
+                callback(nil)
+            }
+        }
+        
+        runRequestAsync(buildGetRequest(url), callWrapper)
     }
     
     /*
@@ -70,13 +90,21 @@ class CommunicationManagerModel
         return NSURLRequest(URL: NSURL.URLWithString(url))
     }
     
-    //TODO: Check error conditions
     func runRequestAsync(request: NSURLRequest, callback: String? -> Void)
     {
         var dataTask = self.session.dataTaskWithRequest(request, completionHandler: {
             (retData, response, error) in
             let retString = NSString(data: retData, encoding: NSUTF8StringEncoding)
-            callback(retString)
+            
+            if let e = error
+            {
+                print(e.localizedDescription)
+                callback(nil)
+            }
+            else
+            {
+                callback(retString)
+            }
             })
         
         dataTask.resume()
@@ -104,5 +132,28 @@ class CommunicationManagerModel
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER)
         
         return opString
+    }
+    
+    /*
+    Return an array representing the parsed JSON.
+    This method does not generalize to all JSON, 
+    only the specification used by our server. 
+    Since the outer level is always an array,
+    returning an Array suffices.
+    */
+    func parseJson(text: String) -> NSObject?
+    {
+        var posEr: NSError?
+        
+        //Should be an NSObject upon return
+        var parsedObj = NSJSONSerialization.JSONObjectWithData(text.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false), options: nil, error: &posEr) as? NSObject
+        
+        if let error = posEr
+        {
+            println(error.localizedDescription)
+            return nil
+        }
+        
+        return parsedObj
     }
 }
