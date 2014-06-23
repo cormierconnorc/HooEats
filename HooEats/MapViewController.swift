@@ -9,11 +9,12 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocationManagerDelegate
+class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocationManagerDelegate, DiningDataDelegate, MKMapViewDelegate
 {
     @IBOutlet var map: MKMapView
     
     var locManager: CLLocationManager?
+    weak var diningModel: DiningDataModel?
     
     override func viewDidLoad()
     {
@@ -29,6 +30,9 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         //Do this instead
         locManager!.requestAlwaysAuthorization()
         locManager!.delegate = self
+        
+        //Set map delegate as well
+        self.map.delegate = self
         
         //Center the map around UVa
         let (lat, long) = (38.034, -78.508)
@@ -54,6 +58,9 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
             //Set the delegate to this class, which won't respond
             self.navigationController.interactivePopGestureRecognizer.delegate = self
         }
+        
+        //Now refresh pins
+        refreshDiningPins()
     }
     
     override func viewWillDisappear(animated: Bool)
@@ -81,5 +88,126 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         {
             self.map.showsUserLocation = true
         }
+    }
+    
+    func refreshDiningPins()
+    {
+        if let overviews = diningModel?.diningHallOverviews
+        {
+            //Sort by location so same values end up together
+            overviews.sort { $0.location! < $1.location! }
+            
+            var groups: DiningHallOverview[][] = [[]]
+            var index = 0
+            
+            //Group pins in same location
+            for x in 0..overviews.count
+            {
+                if x != 0 && overviews[x - 1].location! != overviews[x].location!
+                {
+                    index++
+                    groups.append([])
+                }
+                
+                groups[index].append(overviews[x])
+            }
+            
+            for diningGroup in groups
+            {
+                var annotation = DiningAnnotation(diningGroup: diningGroup)
+                annotation.coordinate = CLLocationCoordinate2DMake(diningGroup[0].location!.latitude, diningGroup[0].location!.longitude)
+                //TODO change
+                annotation.title = diningGroup[0].name
+                self.map.addAnnotation(annotation)
+            }
+        }
+    }
+    
+    func onOverviewDataReady()
+    {
+        refreshDiningPins()
+    }
+    
+    //Show custom pins
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView!
+    {
+        //Necessary due to compiler bug. "is" returns an Int1 instead of a Bool, thus it cannot be negated
+        //with ! and the following condition is impossible. Hooray for working with in-developement languages!
+        //See stackoverflow for confirmation that I'm not crazy: http://stackoverflow.com/questions/24194571/swift-compare-anyobject-with-is-syntax
+        //This is one of the better-acknowledged bugs I've come across
+        var isDining = (annotation is DiningAnnotation ? true : false)
+        
+        if !(isDining)
+        {
+            return nil
+        }
+        
+        let dinAn = annotation as DiningAnnotation
+        let identifier = "DiningAnnotation"
+        
+        var annotationView = self.map.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+        
+        if (annotationView)
+        {
+            annotationView!.annotation = dinAn
+        }
+        else
+        {
+            annotationView = MKPinAnnotationView(annotation: dinAn, reuseIdentifier: identifier)
+        }
+        
+        //I'll be showing my own popover
+        annotationView!.canShowCallout = false
+        
+        //Set appropriate pin color based on whether locations are open
+        var allOpen = true
+        var allClosed = true
+        
+        //Figure out if all halls are opened or closed
+        for hall in dinAn.diningGroup
+        {
+            if let opPeriods = hall.hours
+            {
+                for period in opPeriods
+                {
+                    if period.isCurrent()
+                    {
+                        allClosed = false
+                    }
+                    else
+                    {
+                        allOpen = false
+                    }
+                }
+            }
+        }
+        
+        //If both, there were no operation hours set. This would be indicated by a red pin as well
+        if allClosed
+        {
+            annotationView!.pinColor = MKPinAnnotationColor.Red
+        }
+        else if allOpen
+        {
+            annotationView!.pinColor = MKPinAnnotationColor.Green
+        }
+        else    //Mixed. Indicated with purple
+        {
+            annotationView!.pinColor = MKPinAnnotationColor.Purple
+        }
+        
+        
+        return annotationView;
+    }
+}
+
+//A custom annotation for my pins
+class DiningAnnotation: MKPointAnnotation
+{
+    var diningGroup: DiningHallOverview[]
+    
+    init(diningGroup: DiningHallOverview[])
+    {
+        self.diningGroup = diningGroup
     }
 }

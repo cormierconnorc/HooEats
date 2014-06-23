@@ -31,12 +31,12 @@ class DiningDataModel
     
     //Data
     var diningHallOverviews: DiningHallOverview[]
-    var diningHalls: DiningHall[]
+    var diningHallMenus: DiningHallMenu[]
     
     init()
     {
         diningHallOverviews = []
-        diningHalls = []
+        diningHallMenus = []
     }
     
     func getAll()
@@ -106,14 +106,14 @@ class DiningDataModel
         let uData = dictRay!
         
         //Clear out existing
-        self.diningHalls.removeAll(keepCapacity: true)
+        self.diningHallMenus.removeAll(keepCapacity: true)
         
         //Perform operations on data
         for diningHall in uData
         {
-            var hall = DiningHall(dict: diningHall)
+            var hall = DiningHallMenu(dict: diningHall)
             
-            self.diningHalls.append(hall)
+            self.diningHallMenus.append(hall)
         }
         
         self.delegate?.onMenuDataReady?()
@@ -127,8 +127,56 @@ class DiningDataModel
         
         if activeThreads == 0
         {
+            //Associate menu data now that everything's here
+            self.associateMenuData()
+            
             self.delegate?.onAllDataReady?()
         }
+    }
+    
+    func associateMenuData()
+    {
+        //Format string for coming comparison, only used here
+        func prepare(str: String?) -> String?
+        {
+            //Make lower case
+            var nStr = str?.lowercaseString
+            
+            //Get section before menu
+            nStr = nStr?.componentsSeparatedByString("menu")[0]
+            
+            //Replace hall/cafe/dining
+            nStr = nStr?.stringByReplacingOccurrencesOfString("hall", withString: "", options: nil, range: nil).stringByReplacingOccurrencesOfString("cafe", withString: "", options: nil, range: nil).stringByReplacingOccurrencesOfString("dining", withString: "", options: nil, range: nil)
+            
+            //Trim whitespace
+            nStr = nStr?.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            
+            return nStr
+        }
+        
+        var associated = 0
+        
+        for menu in diningHallMenus
+        {
+            let dinName = prepare(menu.name)
+            //println(dinName)
+            
+            //Try to find the associated overview
+            for overview in diningHallOverviews
+            {
+                //If overview name starts with the menu name, us it.
+                if overview.name && dinName && prepare(overview.name)!.hasPrefix(dinName!)
+                {
+                    //println("Overview name was \(overview.name!) and dinName was \(dinName!)")
+                    associated++
+                    overview.menu = menu
+                    
+                    break
+                }
+            }
+        }
+        
+        println("Of \(diningHallMenus.count) menus, \(associated) were associated!")
     }
 }
 
@@ -141,6 +189,7 @@ class DiningHallOverview
     var hours: OperationPeriod[]?
     var mealswipeMode: Int?
     var mealswipeHours: OperationPeriod[]?
+    var menu: DiningHallMenu?
     
     init(dict: Dictionary<String, String>)
     {
@@ -165,8 +214,8 @@ class DiningHallOverview
     }
 }
 
-//Now the Dining Hall Menu Data classes, starting with the parent: DiningHall
-class DiningHall
+//Now the Dining Hall Menu Data classes, starting with the parent: DiningHallMenu
+class DiningHallMenu
 {
     var name: String?
     var meals: Meal[]
@@ -288,6 +337,21 @@ struct LatLng
         self.latitude = parts[0].bridgeToObjectiveC().doubleValue
         self.longitude = parts[1].bridgeToObjectiveC().doubleValue
     }
+}
+
+@infix func ==(left: LatLng, right: LatLng) -> Bool
+{
+    return left.latitude == right.latitude && left.longitude == right.longitude
+}
+
+@infix func !=(left: LatLng, right: LatLng) -> Bool
+{
+    return !(left == right)
+}
+
+@infix func <(left: LatLng, right: LatLng) -> Bool
+{
+    return (left.latitude != right.latitude ? left.latitude < right.latitude : left.longitude < right.longitude)
 }
 
 struct OperationPeriod

@@ -10,6 +10,7 @@
 		CE133D851955EFDB00B3AD70 /* DiningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE133D841955EFDB00B3AD70 /* DiningViewController.swift */; };
 		CE4B8C481956156100CEB735 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B8C471956156100CEB735 /* MapViewController.swift */; };
 		CE4B8C4A1956167900CEB735 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B8C491956167900CEB735 /* MapKit.framework */; };
+		CEAEAE4D19587ECC00F8E8B8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
 		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
@@ -37,6 +38,7 @@
 		CE133D841955EFDB00B3AD70 /* DiningViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningViewController.swift; sourceTree = "<group>"; };
 		CE4B8C471956156100CEB735 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		CE4B8C491956167900CEB735 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E481955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC74E501955132C00EC0433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				CECEF07519573207004AAD4B /* AccountViewController.swift */,
 				CE4B8C471956156100CEB735 /* MapViewController.swift */,
 				CE133D841955EFDB00B3AD70 /* DiningViewController.swift */,
+				CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */,
 				CECEF07719579877004AAD4B /* DiningDataModel.swift */,
 				CEC74E661955135700EC0433 /* AppDelegate.swift */,
 				CEC74E671955135700EC0433 /* AuthenticationManagerModel.swift */,
@@ -245,6 +248,7 @@
 				CE133D851955EFDB00B3AD70 /* DiningViewController.swift in Sources */,
 				CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */,
 				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,
+				CEAEAE4D19587ECC00F8E8B8 /* MenuViewController.swift in Sources */,
 				CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */,
 				CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */,
 				CEC74E6E1955135700EC0433 /* NetbadgeViewController.swift in Sources */,
