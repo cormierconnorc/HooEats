@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DiningHallOverview
 {
@@ -54,6 +55,102 @@ class DiningHallOverview
         }
         
         return false
+    }
+    
+    func getFormattedHallInfoText() -> NSAttributedString
+    {
+        //Create heading font
+        var headFont = UIFont.boldSystemFontOfSize(12)
+        var headColor = UIColor.lightGrayColor()
+        
+        //Create text font
+        var bodyFont = UIFont.systemFontOfSize(17)
+        var bodyColor = UIColor.blackColor()
+        
+        var atString = NSMutableAttributedString()
+        
+        func addAttrString(nStr: String, fontVal: AnyObject?, colorVal: AnyObject?)
+        {
+            var nAtStr = NSMutableAttributedString(string: nStr)
+            
+            nAtStr.addAttribute(NSFontAttributeName, value: fontVal, range: NSMakeRange(0, nAtStr.length))
+            nAtStr.addAttribute(NSForegroundColorAttributeName, value: colorVal, range: NSMakeRange(0, nAtStr.length))
+            
+            atString.appendAttributedString(nAtStr)
+        }
+        
+        func addHeadString(nStr: String)
+        {
+            addAttrString(nStr, headFont, headColor)
+        }
+        
+        func addBodyString(nStr: String)
+        {
+            addAttrString(nStr, bodyFont, bodyColor)
+        }
+        
+        //Now add the strings
+        addHeadString("Name:\n")
+        addBodyString("\(self.name)\n\n")
+        
+        addHeadString("Description:\n")
+        addBodyString("\(self.description)\n\n")
+        
+        addHeadString("Location:\n")
+        addBodyString("\(self.location?.latitude),\(self.location?.longitude)\n\n")
+        
+        addHeadString("Hours:\n")
+        
+        if !self.hours || self.hours?.count == 0
+        {
+            addBodyString("This location is closed. No hours available.\n")
+        }
+        else
+        {
+            for per in self.hours!
+            {
+                addBodyString(per.getFormattedPeriod() + "\n")
+            }
+        }
+        //Enter down once more after that
+        addBodyString("\n")
+        
+        addHeadString("Mealswipe Info:\n")
+        
+        if let mode = self.mealswipeMode
+        {
+            switch mode
+            {
+            case 0:
+                addBodyString("Does not accept mealswipes.")
+            case 1:
+                addBodyString("Accepts mealswipes when open.")
+            default:
+                addBodyString("Accepts mealswipes at given hours.\n\n")
+                //Now print hours
+                addHeadString("Mealswipe Hours:\n")
+                
+                if !self.mealswipeHours || self.mealswipeHours?.count == 0
+                {
+                    addBodyString("No hours available. There might be something wrong with our data!")
+                }
+                else
+                {
+                    for per in self.mealswipeHours!
+                    {
+                        addBodyString(per.getFormattedPeriod() + "\n")
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            addBodyString("No information available.")
+        }
+        
+        //Insert name
+        return atString
     }
 }
 
@@ -188,6 +285,9 @@ struct OperationPeriod
         var minute = time % 100
         var part = (hour >= 12 ? "PM" : "AM")
         
+        //Special string to handle minutes (if less than 10, we need to reformat)
+        var minStr = minute < 10 ? "0\(minute)" : "\(minute)"
+        
         hour %= 12
         
         if hour == 0
@@ -195,7 +295,7 @@ struct OperationPeriod
             hour = 12
         }
         
-        return "\(hour):\(minute) \(part)"
+        return "\(hour):\(minStr) \(part)"
     }
     
     func getFormattedPeriod() -> String
