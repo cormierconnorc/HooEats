@@ -144,10 +144,10 @@
             </objects>
             <point key="canvasLocation" x="1331" y="507"/>
         </scene>
-        <!--Menu View Controller - Menu List-->
+        <!--Hall List View Controller - Menu List-->
         <scene sceneID="ZJd-XN-tLI">
             <objects>
-                <tableViewController id="q0L-nz-DfT" customClass="MenuViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="q0L-nz-DfT" customClass="HallListViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Zfp-MB-CE4">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,7 +181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPx-Tk-Nn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="-108"/>
+            <point key="canvasLocation" x="2105" y="507"/>
         </scene>
         <!--Map View Controller - Map View-->
         <scene sceneID="Md6-4R-Sse">
@@ -212,11 +212,12 @@
                     <connections>
                         <outlet property="map" destination="tK3-e1-fRG" id="LVx-wi-Wxt"/>
                         <segue destination="6xc-Ml-n7r" kind="show" identifier="mapToHallSegue" id="QMd-s9-ley"/>
+                        <segue destination="q0L-nz-DfT" kind="show" identifier="mapToHallListSegue" id="ZM8-eN-UwI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-t0-CWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="507"/>
+            <point key="canvasLocation" x="2105" y="-108"/>
         </scene>
         <!--Hall Overview Controller - Dining Location Information-->
         <scene sceneID="vgc-IF-9ib">
@@ -254,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="2815" y="507"/>
         </scene>
-        <!--Menu View Controller-->
+        <!--Hall List View Controller-->
         <scene sceneID="Goq-hD-acr">
             <objects>
-                <tableViewController storyboardIdentifier="mapMenuViewController" id="VSF-Xh-8Mb" customClass="MenuViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="mapHallListViewController" id="VSF-Xh-8Mb" customClass="HallListViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Kkn-1b-opo">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -284,6 +285,11 @@
                             <outlet property="delegate" destination="VSF-Xh-8Mb" id="vzb-gm-EAe"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="480" height="480"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Tj-RP-OrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -419,5 +425,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="QMd-s9-ley"/>
+        <segue reference="ZM8-eN-UwI"/>
     </inferredMetricsTieBreakers>
 </document>

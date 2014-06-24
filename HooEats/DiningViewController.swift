@@ -57,7 +57,7 @@ class DiningViewController: UIViewController
         }
         else if segue?.identifier == "menuSegue"
         {
-            var destView = segue!.destinationViewController as MenuViewController
+            var destView = segue!.destinationViewController as HallListViewController
             destView.diningModel = diningModel
             diningModel.delegate = destView
             

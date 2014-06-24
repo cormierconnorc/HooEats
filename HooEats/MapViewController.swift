@@ -17,6 +17,7 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
     weak var diningModel: DiningDataModel?
     
     var selectedLocation: DiningHallOverview?
+    var selectedGroup: DiningHallOverview[]?
     
     override func viewDidLoad()
     {
@@ -60,7 +61,11 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
             //Set the delegate to this class, which won't respond
             self.navigationController.interactivePopGestureRecognizer.delegate = self
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool)
+    {
+        super.viewDidAppear(animated)
         //Now refresh pins
         refreshDiningPins()
     }
@@ -116,11 +121,12 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
             
             for diningGroup in groups
             {
-                var annotation = DiningAnnotation(diningGroup: diningGroup)
-                annotation.coordinate = CLLocationCoordinate2DMake(diningGroup[0].location!.latitude, diningGroup[0].location!.longitude)
-                //TODO change
-                annotation.title = diningGroup[0].name
-                self.map.addAnnotation(annotation)
+                if diningGroup.count > 0
+                {
+                    var annotation = DiningAnnotation(diningGroup: diningGroup)
+                    annotation.coordinate = CLLocationCoordinate2DMake(diningGroup[0].location!.latitude, diningGroup[0].location!.longitude)
+                    self.map.addAnnotation(annotation)
+                }
             }
         }
     }
@@ -202,24 +208,36 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         
         if let dinAn = (view.annotation as? DiningAnnotation)
         {
-            //Instantiate one of the table views from the storyboard
-            var popoverLocList = self.storyboard.instantiateViewControllerWithIdentifier("mapMenuViewController") as MenuViewController
+            //Create a popover on the iPad
+            if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
+            {
+                //Instantiate one of the table views from the storyboard
+                var popoverLocList = self.storyboard.instantiateViewControllerWithIdentifier("mapHallListViewController") as HallListViewController
+
+                //Set data given to location list
+                popoverLocList.tableData = MenuTableDataModel(hallList: dinAn.diningGroup)
             
-            //Set data given to location list
-            popoverLocList.tableData = MenuTableDataModel(hallList: dinAn.diningGroup)
+                //Now create a popover to hold it
+                var popover = UIPopoverController(contentViewController: popoverLocList)
             
-            //Now create a popover to hold it
-            var popover = UIPopoverController(contentViewController: popoverLocList)
+                popover.popoverContentSize = CGSizeMake(200, 200)
             
-            //Set the "on selected" block to perform the appropriate segue
-            popoverLocList.onRowSelected = {
-                popover.dismissPopoverAnimated(true)
-                self.selectedLocation = popoverLocList.getSelectedOverview()
-                self.performSegueWithIdentifier("mapToHallSegue", sender: self)
+                //Set the "on selected" block to perform the appropriate segue
+                popoverLocList.onRowSelected = {
+                    popover.dismissPopoverAnimated(true)
+                    self.selectedLocation = popoverLocList.getSelectedOverview()
+                    self.performSegueWithIdentifier("mapToHallSegue", sender: self)
+                }
+
+                //And show the popover
+                popover.presentPopoverFromRect(view.frame, inView: view.superview, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
             }
-            
-            //And show the popover
-            popover.presentPopoverFromRect(view.frame, inView: view.superview, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+            //Segue to the list view on the iPhone
+            else
+            {
+                self.selectedGroup = dinAn.diningGroup
+                self.performSegueWithIdentifier("mapToHallListSegue", sender: self)
+            }
         }
         
     }
@@ -233,6 +251,20 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
             {
                 //Set the dining hall being shown by the destination
                 dest.diningHallOverview = loc
+            }
+        }
+        //If transitioning to a list
+        else if let dest = segue!.destinationViewController as? HallListViewController
+        {
+            if let selGroup = self.selectedGroup
+            {
+                dest.tableData = MenuTableDataModel(hallList: selGroup)
+                
+                
+                //Tell it to segue on selection
+                dest.onRowSelected = {
+                    dest.performSegueWithIdentifier("hallOverviewSegue", sender: dest)
+                }
             }
         }
     }

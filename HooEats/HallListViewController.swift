@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuViewController: UITableViewController, DiningDataDelegate
+class HallListViewController: UITableViewController, DiningDataDelegate
 {
     //Cell identifier (get from storyboard)
     let cellIdentifier = "diningCell"

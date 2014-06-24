@@ -14,7 +14,7 @@
 		CE9628701958E17500B4962A /* DiningHallMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE96286F1958E17500B4962A /* DiningHallMenuModel.swift */; };
 		CE9628721958E1D900B4962A /* MenuTableDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9628711958E1D900B4962A /* MenuTableDataModel.swift */; };
 		CE9628741958F3DA00B4962A /* HallOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9628731958F3DA00B4962A /* HallOverviewController.swift */; };
-		CEAEAE4D19587ECC00F8E8B8 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */; };
+		CEAEAE4D19587ECC00F8E8B8 /* HallListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAEAE4C19587ECC00F8E8B8 /* HallListViewController.swift */; };
 		CEC74E511955132C00EC0433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEC74E501955132C00EC0433 /* Images.xcassets */; };
 		CEC74E5D1955132C00EC0433 /* HooEatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E5C1955132C00EC0433 /* HooEatsTests.swift */; };
 		CEC74E6C1955135700EC0433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC74E661955135700EC0433 /* AppDelegate.swift */; };
@@ -46,7 +46,7 @@
 		CE96286F1958E17500B4962A /* DiningHallMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHallMenuModel.swift; sourceTree = "<group>"; };
 		CE9628711958E1D900B4962A /* MenuTableDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableDataModel.swift; sourceTree = "<group>"; };
 		CE9628731958F3DA00B4962A /* HallOverviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HallOverviewController.swift; sourceTree = "<group>"; };
-		CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		CEAEAE4C19587ECC00F8E8B8 /* HallListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HallListViewController.swift; sourceTree = "<group>"; };
 		CEC74E441955132C00EC0433 /* HooEats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HooEats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEC74E481955132C00EC0433 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEC74E501955132C00EC0433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				CECEF07519573207004AAD4B /* AccountViewController.swift */,
 				CE4B8C471956156100CEB735 /* MapViewController.swift */,
 				CE133D841955EFDB00B3AD70 /* DiningViewController.swift */,
-				CEAEAE4C19587ECC00F8E8B8 /* MenuViewController.swift */,
+				CEAEAE4C19587ECC00F8E8B8 /* HallListViewController.swift */,
 				CE9628731958F3DA00B4962A /* HallOverviewController.swift */,
 				CE9628711958E1D900B4962A /* MenuTableDataModel.swift */,
 				CECEF07719579877004AAD4B /* DiningDataModel.swift */,
@@ -261,7 +261,7 @@
 				CE9628701958E17500B4962A /* DiningHallMenuModel.swift in Sources */,
 				CEC74E711955135700EC0433 /* AuthViewController.swift in Sources */,
 				CEC74E6F1955135700EC0433 /* CommunicationManagerModel.swift in Sources */,
-				CEAEAE4D19587ECC00F8E8B8 /* MenuViewController.swift in Sources */,
+				CEAEAE4D19587ECC00F8E8B8 /* HallListViewController.swift in Sources */,
 				CE9628741958F3DA00B4962A /* HallOverviewController.swift in Sources */,
 				CEC74E701955135700EC0433 /* FileManagerModel.swift in Sources */,
 				CEC74E6D1955135700EC0433 /* AuthenticationManagerModel.swift in Sources */,
