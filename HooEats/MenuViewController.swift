@@ -10,25 +10,46 @@ import UIKit
 
 class MenuViewController: UITableViewController, DiningDataDelegate
 {
-    weak var diningModel: DiningDataModel?
-    {
+    //Cell identifier (get from storyboard)
+    let cellIdentifier = "diningCell"
+    
+    //Dining model: Used when data may update after object creation
+    weak var diningModel: DiningDataModel? {
     //Set the dining hall list prior to setting this
-    willSet
-    {
+    willSet {
         tableData = MenuTableDataModel(hallList: newValue?.diningHallOverviews)
     }
     }
     
-    var tableData = MenuTableDataModel(hallList: nil)
+    //Table data model
+    var tableData: MenuTableDataModel = MenuTableDataModel(hallList: nil) {
+    didSet {
+        self.tableView.reloadData()
+    }
+    }
+    
+    //Block to invoke upon row selection
+    var onRowSelected: (() -> Void)? = nil
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
     }
-    
+
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getSelectedOverview() -> DiningHallOverview?
+    {
+        if let index = self.tableView.indexPathForSelectedRow()
+        {
+            //Set the dining hall being shown by the destination
+            return tableData.getHallAtIndexPath(index)
+        }
+        
+        return nil
     }
     
     /*
@@ -40,6 +61,21 @@ class MenuViewController: UITableViewController, DiningDataDelegate
         self.tableData = MenuTableDataModel(hallList: diningModel?.diningHallOverviews)
     }
     
+    /*
+    Handle what to do upon row selection
+    */
+    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    {
+        var myOverview = tableData.getHallAtIndexPath(indexPath)
+        
+        //Now give the overview to our callback block if it exists
+        self.onRowSelected?()
+    }
+    
+    /*
+    Data source methods used to populate table view upon refresh
+    Self-explanatory.
+    */
     override func numberOfSectionsInTableView(tableView: UITableView!) -> Int
     {
         return tableData.numSections
@@ -57,7 +93,6 @@ class MenuViewController: UITableViewController, DiningDataDelegate
     
     override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell
     {
-        let cellIdentifier = "diningCell"
         var cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as UITableViewCell
         
         //Set value of cell
@@ -66,5 +101,18 @@ class MenuViewController: UITableViewController, DiningDataDelegate
         cell.text = overview.name
         
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!)
+    {
+        //If transitioning to a location overview controller
+        if let dest = segue!.destinationViewController as? HallOverviewController
+        {
+            if let view = self.getSelectedOverview()
+            {
+                //Set the dining hall being shown by the destination
+                dest.diningHallOverview = view
+            }
+        }
     }
 }

@@ -60,6 +60,11 @@ class DiningViewController: UIViewController
             var destView = segue!.destinationViewController as MenuViewController
             destView.diningModel = diningModel
             diningModel.delegate = destView
+            
+            //Set what to do upon selection
+            destView.onRowSelected = {
+                destView.performSegueWithIdentifier("hallOverviewSegue", sender: destView)
+            }
         }
     }
 

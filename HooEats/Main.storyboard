@@ -175,6 +175,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Menu List" id="GzG-JR-jZ8"/>
+                    <connections>
+                        <segue destination="6xc-Ml-n7r" kind="show" identifier="hallOverviewSegue" id="Kj2-59-DFz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OPx-Tk-Nn5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -208,11 +211,83 @@
                     <navigationItem key="navigationItem" title="Map View" id="G9d-IC-OYA"/>
                     <connections>
                         <outlet property="map" destination="tK3-e1-fRG" id="LVx-wi-Wxt"/>
+                        <segue destination="6xc-Ml-n7r" kind="show" identifier="mapToHallSegue" id="QMd-s9-ley"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nxF-t0-CWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2065" y="507"/>
+            <point key="canvasLocation" x="2077" y="507"/>
+        </scene>
+        <!--Hall Overview Controller - Dining Location Information-->
+        <scene sceneID="vgc-IF-9ib">
+            <objects>
+                <viewController id="6xc-Ml-n7r" customClass="HallOverviewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b5b-ig-iRo"/>
+                        <viewControllerLayoutGuide type="bottom" id="bKN-xc-Put"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OOd-AU-VdJ">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Eh-Hg-kAf">
+                                <rect key="frame" x="20" y="229" width="440" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1Eh-Hg-kAf" firstAttribute="top" secondItem="b5b-ig-iRo" secondAttribute="bottom" constant="165" id="7fF-a1-uUE"/>
+                            <constraint firstAttribute="trailing" secondItem="1Eh-Hg-kAf" secondAttribute="trailing" constant="20" symbolic="YES" id="9DZ-cu-1Wr"/>
+                            <constraint firstItem="1Eh-Hg-kAf" firstAttribute="leading" secondItem="OOd-AU-VdJ" secondAttribute="leading" constant="20" symbolic="YES" id="gbq-SJ-NRs"/>
+                        </constraints>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Dining Location Information" id="W9J-na-8sM"/>
+                    <connections>
+                        <outlet property="tempLabel" destination="1Eh-Hg-kAf" id="uCH-u2-7Sn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uMI-iL-POW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2815" y="507"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="Goq-hD-acr">
+            <objects>
+                <tableViewController storyboardIdentifier="mapMenuViewController" id="VSF-Xh-8Mb" customClass="MenuViewController" customModule="HooEats" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Kkn-1b-opo">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="diningCell" textLabel="fOx-fJ-gMW" style="IBUITableViewCellStyleDefault" id="v2g-cq-UQU">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2g-cq-UQU" id="jtS-gl-2an">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fOx-fJ-gMW">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VSF-Xh-8Mb" id="24k-xY-l1X"/>
+                            <outlet property="delegate" destination="VSF-Xh-8Mb" id="vzb-gm-EAe"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Tj-RP-OrB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2815" y="-108"/>
         </scene>
         <!--Account View Controller - Account Info-->
         <scene sceneID="KHZ-WZ-0VW">
@@ -342,4 +417,7 @@
             <point key="canvasLocation" x="-111" y="813"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="QMd-s9-ley"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,8 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
     var locManager: CLLocationManager?
     weak var diningModel: DiningDataModel?
     
+    var selectedLocation: DiningHallOverview?
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -191,6 +193,48 @@ class MapViewController: UIViewController, UIGestureRecognizerDelegate, CLLocati
         }
         
         return annotationView;
+    }
+    
+    //On pin select
+    func mapView(mapView: MKMapView!, didSelectAnnotationView view: MKAnnotationView!)
+    {
+        mapView.deselectAnnotation(view.annotation, animated: true)
+        
+        if let dinAn = (view.annotation as? DiningAnnotation)
+        {
+            //Instantiate one of the table views from the storyboard
+            var popoverLocList = self.storyboard.instantiateViewControllerWithIdentifier("mapMenuViewController") as MenuViewController
+            
+            //Set data given to location list
+            popoverLocList.tableData = MenuTableDataModel(hallList: dinAn.diningGroup)
+            
+            //Now create a popover to hold it
+            var popover = UIPopoverController(contentViewController: popoverLocList)
+            
+            //Set the "on selected" block to perform the appropriate segue
+            popoverLocList.onRowSelected = {
+                popover.dismissPopoverAnimated(true)
+                self.selectedLocation = popoverLocList.getSelectedOverview()
+                self.performSegueWithIdentifier("mapToHallSegue", sender: self)
+            }
+            
+            //And show the popover
+            popover.presentPopoverFromRect(view.frame, inView: view.superview, permittedArrowDirections: UIPopoverArrowDirection.Any, animated: true)
+        }
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!)
+    {
+        //If transitioning to a location overview controller
+        if let dest = segue!.destinationViewController as? HallOverviewController
+        {
+            if let loc = self.selectedLocation
+            {
+                //Set the dining hall being shown by the destination
+                dest.diningHallOverview = loc
+            }
+        }
     }
 }
 
